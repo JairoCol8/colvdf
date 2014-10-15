@@ -14,5 +14,5 @@ $password='';
 $db='';
 
 //Qué sistema gestor de base de datos utilizamos, mysql, oracle, ...
-$dbType='mysql'
- ?>
+$dbType=''
+?>

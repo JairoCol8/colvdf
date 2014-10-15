@@ -16,21 +16,23 @@ Por ahora, indefinidida. CC.
 
 ```
 colvdf/
-├── app/
-│   └── src/
-│       ├── head/
+├── app/ (*docs*)
+│   └── src/ (*docs*)
+│       ├── core/ (*docs*)
+│       ├── head*/
 │       ├── libs/
 |       └── libs_js/
-├── ext/
-│   ├── jquery/
+├── fw/
+│   ├── js/
 │   ├── bs-editable/
 │   ├── select2/
-│   └── bootstrap/
-├── includes/
+│   └── bs/
+├── includes/ (*docs*)
 │   ├── auth/
+│   ├── libs/
 │   └── model/
 └── media/
 ```
-
+*Pendiente de eliminar
 
 [sitio]:http://thinkandmake.net/~chuik/colvdf/
