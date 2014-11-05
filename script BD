@@ -1,0 +1,138 @@
+/*
+Created		11/4/2014
+Modified		11/4/2014
+Project		
+Model		
+Company		
+Author		
+Version		
+Database		mySQL 5 
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+drop table IF EXISTS nota;
+drop table IF EXISTS horario;
+drop table IF EXISTS seccion;
+drop table IF EXISTS grado;
+drop table IF EXISTS profesor;
+drop table IF EXISTS curso;
+drop table IF EXISTS asignatura;
+drop table IF EXISTS alumno;
+
+
+
+
+Create table alumno (
+	carne Varchar(10) NOT NULL,
+	nom_alumno Char(50),
+	ape_alumno Char(50),
+	dir_alumno Char(100),
+	fec_nac Date,
+	tel_alumno Int,
+ Primary Key (carne)) ENGINE = MyISAM;
+
+Create table asignatura (
+	descripcion Char(100),
+	carne Varchar(10) NOT NULL,
+	cod_grado Varchar(20) NOT NULL,
+ Primary Key (carne,cod_grado)) ENGINE = MyISAM;
+
+Create table curso (
+	cod_curso Varchar(10) NOT NULL,
+	descripcion Char(100),
+	cod_grado Varchar(20) NOT NULL,
+ Primary Key (cod_curso,cod_grado)) ENGINE = MyISAM;
+
+Create table profesor (
+	cod_profesor Varchar(10) NOT NULL,
+	nom_profesor Char(50),
+	ape_profesor Char(50),
+	dir_profesor Char(100),
+	correo_profesor Char(100),
+	tel_profesor Int,
+ Primary Key (cod_profesor)) ENGINE = MyISAM;
+
+Create table grado (
+	cod_grado Varchar(20) NOT NULL,
+	descripcion Char(100),
+ Primary Key (cod_grado)) ENGINE = MyISAM;
+
+Create table seccion (
+	descripcion Char(20),
+	cod_grado Varchar(20) NOT NULL,
+ Primary Key (cod_grado)) ENGINE = MyISAM;
+
+Create table horario (
+	descripcion Char(20),
+	hora_inicial Time,
+	hora_final Time,
+	cod_profesor Varchar(10) NOT NULL,
+	cod_curso Varchar(10) NOT NULL,
+	cod_grado Varchar(20) NOT NULL,
+ Primary Key (cod_profesor,cod_curso,cod_grado)) ENGINE = MyISAM;
+
+Create table nota (
+	descripcion Char(50),
+	nota_afectivo Int,
+	nota_psicomotriz Int,
+	nota_cognositivo Int,
+	nota_final Char(20),
+	cod_curso Varchar(10) NOT NULL,
+	cod_grado Varchar(20) NOT NULL,
+ Primary Key (cod_curso,cod_grado)) ENGINE = MyISAM;
+
+
+
+
+
+
+
+
+
+
+
+
+Alter table asignatura add Foreign Key (carne) references alumno (carne) on delete  restrict on update  restrict;
+Alter table horario add Foreign Key (cod_curso,cod_grado) references curso (cod_curso,cod_grado) on delete  restrict on update  restrict;
+Alter table nota add Foreign Key (cod_curso,cod_grado) references curso (cod_curso,cod_grado) on delete  restrict on update  restrict;
+Alter table horario add Foreign Key (cod_profesor) references profesor (cod_profesor) on delete  restrict on update  restrict;
+Alter table asignatura add Foreign Key (cod_grado) references grado (cod_grado) on delete  restrict on update  restrict;
+Alter table seccion add Foreign Key (cod_grado) references grado (cod_grado) on delete  restrict on update  restrict;
+Alter table curso add Foreign Key (cod_grado) references seccion (cod_grado) on delete  restrict on update  restrict;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Users permissions */
+
+
+
+
+
+
